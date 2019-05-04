@@ -1,11 +1,13 @@
 $(() => {
   $(".change-devoured").on("click", function(event) {
     var id = $(this).data("id");
-    $.ajax("/burgers/update/" + id, {
+    $.ajax("/burgers/update", {
       // Send the PUT request.
       type: "PUT",
-      data: id
-    }).then(() => {
+      data: {
+        id
+      }
+    }).then((res) => {
       location.reload(); //Reload the page to get the updated list
     });
   });
