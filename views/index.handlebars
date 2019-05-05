@@ -1,10 +1,12 @@
 <div class="jumbotron jumbotron-fluid bg-success text-white p-1 py-lg-4 m-0">
+  
   <h1 class="text-center display-3">EAT-DA-BURGER 
     <!--  Modal trigger button -->
     <button type="button" class="btn btn-lg btn-outline-light text-wrap" data-toggle="modal" data-target="#burgerModal">
       <i class="fas fa-hamburger">  Add A New Burger!</i>
     </button>
   </h1>
+  
 </div>
 <div class="container-fluid text-bold text-center">
 
@@ -53,19 +55,18 @@
     </div>
 
   </div>
-
   <!-- Add New Burger Modal -->
   <div class="modal fade" id="burgerModal" tabindex="-1" role="dialog" aria-labelledby="burgerModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content bg-info text-white">
         <div class="modal-header">
+          <!--Easter Egg Secret set all to undevoured button-->
+          <button type="button" class="btn btn-sm btn-outline-info" id="secretResetButton"><i class="fas fa-hamburger"></i></button>
             <h1 class="modal-title text-bolder" id="burgerModalLabel">Add a New Burger!</h1>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body ">
-              <img src="./assets/img/burger_king.jpg" class="card-img-top align-middle rounded-circle d-none d-md-block" id="modalImg" alt="Burger image">
+              <img src="./assets/img/burger_king.jpg" class="card-img-top align-middle rounded-circle" id="modalImg" alt="Burger image">
             <form class="create-form">
                <div class="form-group text-left">
                   <label for="burgercreate text-bolder "> Burger Name:

@@ -7,12 +7,13 @@ $(() => {
       data: {
         id
       }
-    }).then((res) => {
+    }).then(() => {
       location.reload(); //Reload the page to get the updated list
     });
   });
   $(".create-form").on("submit", event => {
     event.preventDefault();// Make sure to preventDefault on a submit event.
+
     let burger = $("#burgercreate").val().trim();
 
     let letterRe = /[A-z\s]/gi;//RegExp to make sure only letters with burger in the name are allowed to be stored
@@ -22,6 +23,7 @@ $(() => {
     if (letterRe.test(burger) && !burgerRe.test(burger) && !notWord.test(burger)) {
       $("#valMessage").html("Burger must be somewhere in the name!");
     } 
+
     else if (letterRe.test(burger) && burgerRe.test(burger) && !notWord.test(burger)) {
 
         var newBurger = {
@@ -39,5 +41,13 @@ $(() => {
       else {
         $("#valMessage").html("Valid input format(A-z with spaces must have burger in name)!");
       }
+  });
+  $("#secretResetButton").on("click", function(event) {
+    $.ajax("/burgers/resetall", {
+      // Send the PUT request.
+      type: "PUT"
+    }).then(() => {
+      location.reload(); //Reload the page to get the updated list
+    });
   });
 });
