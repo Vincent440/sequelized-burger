@@ -1,3 +1,26 @@
 #modalImg {
-    opacity: .85;
+  opacity: 0.80;
 }
+#secretResetButton{
+    color: #213F65;
+    border-color: #213F65;
+    margin-top: 1.2em;
+    margin-right: .65em;
+}
+/* Color Theme Swatches in Hex */
+.darkblue-bg {
+  background-color: #213F65 !important;
+}
+.palegreen-bg {
+  background-color: #025928 !important;
+}
+.red-bg {
+  color: #fff;
+  background-color: #400804 !important;
+}
+.blue-bg {
+  background-color: #213FB6 !important;
+}
+.capitalize {
+    text-transform: capitalize;   
+  }
