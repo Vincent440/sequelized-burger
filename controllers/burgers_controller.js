@@ -8,7 +8,10 @@ var db = require("../models");
 
 
 router.get("/",(req,res)=>{
-    db.Burger.findAll().then(burgers=>{
+    db.Burger.findAll({
+        order: 
+            ['burger_name']
+    }).then(burgers=>{
         res.render('index',{burgers});
     })
 });
