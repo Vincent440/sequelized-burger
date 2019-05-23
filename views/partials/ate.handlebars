@@ -3,13 +3,13 @@
         <h1><i class="fas fa-hamburger"></i><span class="d-none d-md-inline"> Burgers</span> Devoured! <i class="fas fa-hamburger"></i></h1>
     </div>
     {{#each burgers}}
-        {{#if this.dataValues.devoured}}
+        {{#if dataValues.devoured}}
             <div class="card red-bg mb-2">
                 <div class="card-body m-1 p-2">
                     <h5 class="card-title text-capitalize">
                         <span class="badge badge-pill blue-bg float-left">
-                            {{this.dataValues.id}}.
-                        </span>{{this.dataValues.burger_name}}
+                            {{dataValues.id}}.
+                        </span>{{dataValues.burger_name}}
                     </h5>
                 </div>
             </div>

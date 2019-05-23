@@ -57,14 +57,13 @@ $(() => {
   });
 
   $('#eatBurgerModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var burgerId = button.data('burger') // Extract info from data-* attributes
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var burgerId = button.data('burgerid'); // Extract info from data-* attributes
+    var burgerName = button.data('burgername');
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.modal-title').text('New message to ' + burgerId)
-    modal.find('.modal-footer button').val(burgerId)
-  })
-
-
+    modal.find('.modal-title').text('Eat ' + burgerName);
+    modal.find('.modal-footer button').data("burgerid"+burgerId);
+  });
 });
