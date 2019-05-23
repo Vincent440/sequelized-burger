@@ -1,32 +1,28 @@
 module.exports = function(sequelize, DataTypes) {
 
-    var Burger = sequelize.define("Burger", {
-        burger_name: {
+    var User = sequelize.define("User", {
+        user_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
-        },
-        devoured: {
-            type:  DataTypes.BOOLEAN,
-            defaultValue: false
         }
-      },
-      {
+    },
+    {
         freezeTableName:true
-      });
-      Burger.associate = function (models) {
+    });
+    User.associate = function (models) {
         //User Belongs to a burger since they are just being added to eat the created burger
-        Burger.hasOne(models.User, {
+        User.belongsTo(models.Burger, {
             foreignKey: {
             name: 'burgerId',
-            allowNull: true
+            allowNull: false
         },
             onDelete: "cascade"
         });
     };
 
-    return Burger;
+    return User;
 
-};    
+}; 

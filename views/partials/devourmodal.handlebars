@@ -1,0 +1,37 @@
+{{!-- 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eatBurgerModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eatBurgerModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eatBurgerModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> --}}
+
+<!-- Modal to trigger devour, must create user or select user to devour as -->
+<div class="modal fade" id="eatBurgerModal" tabindex="-1" role="dialog" aria-labelledby="eatBurgerModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="eatBurgerModalLabel">Eat The Burger</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="form-row align-items-center">
+                        <label class="" for="user-name">Enter Name Of Devourer</label>
+                        <input type="text" class="form-control" id="user-name" placeholder="Vince"> 
+                    </div>                
+                    
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"> Close</i></button>
+                <button type="submit" id="change-devoured" class="btn btn-primary"data-burger="">Eat Burger!</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+<!-- Add New Burger Modal -->
+<div class="modal fade" id="burgerModal" tabindex="-1" role="dialog" aria-labelledby="burgerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content darkblue-bg text-white">
+
+      <div class="modal-header">
+        <!--Easter Egg Secret set all to undevoured button-->
+        <button type="button" class="btn btn-sm btn-outline-info" id="secretResetButton"><i class="fas fa-hamburger"></i></button>
+          <h1 class="modal-title font-weight-bolder" id="burgerModalLabel">Add a New Burger!</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fas fa-times"></i></span></button>
+      </div>
+
+      <div class="modal-body ">
+        <img src="./assets/img/burger_king.jpg" class="card-img-top align-middle rounded-circle" id="modalImg" alt="Burger image">
+        <form class="create-form">
+
+            <div class="form-group text-left">
+              <div id="valMessage" class="alert alert-warning d-none" role="alert"></div>
+              
+              <label for="burger-create"> Burger Name:</label>
+              <input id="burger-create" class="form-control text-center" type="text" name="burgername" placeholder="Burger name" required >
+
+            </div>
+            <button class="btn-dark btn btn-lg" type="submit">Add <i class="fas fa-hamburger"> Burger!</i>
+            </button>
+
+        </form>
+
+      </div>
+        
+      <div class="modal-footer">
+        <button type="button" class="btn red-bg" data-dismiss="modal"><i class="fas fa-times"> Close</i></button>
+      </div>
+
+     </div>
+  </div>
+</div>
