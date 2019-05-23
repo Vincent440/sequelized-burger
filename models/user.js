@@ -12,8 +12,10 @@ module.exports = function(sequelize, DataTypes) {
     {
         freezeTableName:true
     });
+    
     User.associate = function (models) {
-        //User Belongs to a burger since they are just being added to eat the created burger
+
+        //User Belongs to a burger since they are just being added to eat a single burger
         User.belongsTo(models.Burger, {
             foreignKey: {
             name: 'burgerId',
@@ -21,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         },
             onDelete: "cascade"
         });
+
     };
 
     return User;

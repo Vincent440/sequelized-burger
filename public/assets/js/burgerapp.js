@@ -1,18 +1,29 @@
 $(() => {
 
-  $(".change-devoured").on("click", function(event) {
+  $("#change-devoured").on("click", function(event) {
     //let customer = $("#customer-create").val().trim();
     event.preventDefault();
-    var id = $(this).data("burgerId");
+    let errText = $("eat-alert");
+    if ($("#user-name").val().trim() === undefined ) {
+      errText.removeClass('d-none');
+      errText.text("name must not be null");
+    }
+    else {
+      let userBurger = {
+        burgerId: $(this).data("burgerId"),
+        user_name: $("#user-name").val().trim()
+      }
+
     $.ajax("/burgers/update", {
       // Send the PUT request.
       type: "PUT",
-      data: {
-        id
-      }
+      data: userBurger
     }).then(() => {
       location.reload(); //Reload the page to get the updated list
     });
+    }
+
+
   });
 
   $(".create-form").on("submit", function(event) {

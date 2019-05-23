@@ -18,17 +18,18 @@ router.get("/",(req,res)=>{
 });
 
 router.put("/burgers/update",(req,res)=>{
-    db.Burger.update(
-    {
-        devoured:true
-    },
-    {
-    where: {
-        id: req.body.id
+    db.Burger.update({devoured:true},
+        { 
+        where: {
+            id: req.body.burgerId
         }
     }).then(()=>{
-       res.status(200).end();
-
+        db.User.create({
+            user_name: req.body.user_name,
+            burgerId: req.body.burgerId
+        }).then(()=>{
+            res.status(200).end();
+        });
     });
 });
 
