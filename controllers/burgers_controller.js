@@ -39,7 +39,8 @@ router.post("/burgers/create",(req, res)=> {
     });
 });
 
-router.put("/burgers/resetall",(req,res)=>{//Secret update all to uneaten button.  
+router.put("/burgers/resetall",(req,res)=>{
+    //Secret update all to uneaten button. This needs to be updated to dump all the users in the users table upon updating to not eaten.
     db.Burger.update({ devoured:false },{
         where: { devoured: true }
     }).then(()=>{
