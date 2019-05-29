@@ -1,0 +1,22 @@
+<div class="col-12">
+    <div class="shadow-lg py-3 mb-4 palegreen-bg rounded my-4 my-md-3 p-1">
+        <h3><i class="fas fa-hamburger"> Not Devoured</i><span class="d-none d-md-inline"> Burgers</span>! <i class="fas fa-hamburger"></i></h3>
+    </div>
+    {{#each burgers}}
+        {{#unless dataValues.devoured}}
+            <div class="card palegreen-bg mb-2">
+                <div class="card-body m-1 p-2">
+                    <h6 class="card-title text-capitalize">
+                        <span class="badge badge-pill blue-bg float-left">{{dataValues.id}}.</span>
+                        {{dataValues.burger_name}}
+                        <span class="float-right">
+                            <button class="btn red-bg btn-sm ml-2" data-toggle="modal" data-target="#eatBurgerModal" data-burgerid="{{dataValues.id}}" data-burgername="{{dataValues.burger_name}}">
+                                <i class="fas fa-hamburger"> DEVOUR!</i>
+                            </button>
+                        </span>
+                    </h6>
+                </div>
+            </div>
+        {{/unless}}
+    {{/each}}
+</div>

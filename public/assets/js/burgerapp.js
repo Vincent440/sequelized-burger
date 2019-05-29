@@ -1,53 +1,80 @@
+/* eslint-disable no-undef */
 $(() => {
-  $(".change-devoured").on("click", function(event) {
-    var id = $(this).data("id");
-    $.ajax("/burgers/update", {
-      // Send the PUT request.
-      type: "PUT",
-      data: {
-        id
+//RegEx used for creating burger, and User
+  let letterReg = /[A-z\s]/gi;//Checks that it contains letters with spaces
+  let notWord = /\d|[^a-z\s]/gi;//checks if it contains digits or anything that is not a letter
+
+  $("#change-devoured-btn").on("click", function(event) {
+    event.preventDefault();
+
+    let user = $("#user-name").val().trim();
+    let errText = $("#eat-alert");
+    let id = $(this).data("burgerid");
+
+    if ( !letterReg.test(user) || notWord.test(user) ) {
+      errText.removeClass('d-none');
+      errText.html("Name can't be left blank & Must only contain letters.");
+    }
+    else if (letterReg.test(user) && !notWord.test(user)) {
+      let ateBurger = {
+        burgerId: id,
+        user_name: user
       }
-    }).then(() => {
-      location.reload(); //Reload the page to get the updated list
-    });
+      $.ajax("/burgers/update", {
+        type: "PUT",
+        data: ateBurger
+      }).then(() => {
+        location.reload(); //Reload the page to update
+      });
+    }
+    else {
+      errText.removeClass("d-none");
+      errText.html("Name must contain letters only, and Can't be left blank.");
+    }
   });
-  $(".create-form").on("submit", event => {
+
+  $(".create-form").on("submit", function(event) {
     event.preventDefault();// Make sure to preventDefault on a submit event.
 
-    let burger = $("#burgercreate").val().trim();
-
-    let letterRe = /[A-z\s]/gi;//RegExp to make sure only letters with burger in the name are allowed to be stored
+    let burger = $("#burger-create").val().trim();
+    //RegExp to make sure only letters with burger in the name are allowed to be stored
     let burgerRe = /(?:burger)/i;
-    let notWord = /\d|[^a-z\s]/gi
 
-    if (letterRe.test(burger) && !burgerRe.test(burger) && !notWord.test(burger)) {
+    if (letterReg.test(burger) && !burgerRe.test(burger) && !notWord.test(burger)) {
+      $("#valMessage").removeClass("d-none");
       $("#valMessage").html("Burger must be somewhere in the name!");
     } 
-
-    else if (letterRe.test(burger) && burgerRe.test(burger) && !notWord.test(burger)) {
-
+    else if (letterReg.test(burger) && burgerRe.test(burger) && !notWord.test(burger)) {
         var newBurger = {
           burger_name: burger
         };
-
         $.ajax("/burgers/create", {// Send the POST request.
           type: "POST",
           data: newBurger
         }).then(() => {
           location.reload(); //Reload the page to get the updated list
         });
-
       }
       else {
+        $("#valMessage").removeClass("d-none");
         $("#valMessage").html("Valid input format(A-z with spaces must have burger in name)!");
       }
   });
+
   $("#secretResetButton").on("click", function(event) {
-    $.ajax("/burgers/resetall", {
-      // Send the PUT request.
+    $.ajax("/burgers/resetall", { // Send the PUT request.
       type: "PUT"
     }).then(() => {
       location.reload(); //Reload the page to get the updated list
     });
+  });
+
+  $('#eatBurgerModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var burgerId = button.data('burgerid'); // Extract info from data-* attributes
+    var burgerName = button.data('burgername');
+    var modal = $(this)
+    modal.find('#eatBurgerModalLabel').text('Eat ' + burgerName);
+    $("#change-devoured-btn").attr("data-burgerid",burgerId);
   });
 });

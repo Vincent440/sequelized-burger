@@ -7,6 +7,10 @@
     margin-top: 1.2em;
     margin-right: .65em;
 }
+.eat-name {
+  font-size: 60%;
+  font-weight: 400;
+}
 /* Color Theme Swatches in Hex */
 .darkblue-bg {
   background-color: #213F65 !important;
@@ -21,6 +25,3 @@
 .blue-bg {
   background-color: #213FB6 !important;
 }
-.capitalize {
-    text-transform: capitalize;   
-  }

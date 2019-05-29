@@ -1,0 +1,27 @@
+<div class="col-12">
+    <div class="shadow-lg p-3 mb-4 red-bg rounded my-4 my-md-3">
+        <h3><i class="fas fa-hamburger"></i><span class="d-none d-md-inline"> Burgers</span> Devoured! <i class="fas fa-hamburger"></i></h3>
+    </div>
+    {{#each burgers}}
+        {{#if dataValues.devoured}}
+            <div class="card red-bg mb-2">
+                <div class="card-body m-1 p-2">
+                    <div class="row no-gutters text-center">
+                        <div class="col-1 mx-0">
+                            <span class="badge badge-pill blue-bg">
+                                {{dataValues.id}}.
+                            </span>
+                        </div>
+                        <div class="col-8 mx-0">
+                            <h6 class="card-title text-capitalize px-0 mx-0">{{dataValues.burger_name}}</h6>
+                        </div>
+                        <div class="col-3 mx-0">
+                            <p class="card-text text-muted eat-name">Devoured By:<br> {{User.dataValues.user_name}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {{/if}}
+    {{/each}}
+</div>

@@ -1,88 +1,29 @@
-<div class="jumbotron jumbotron-fluid palegreen-bg text-white p-1 py-lg-4 m-0">
+<div class="jumbotron jumbotron-fluid palegreen-bg text-white p-0 m-0">
   
-  <h1 class="text-center display-3">EAT-DA-BURGER <span class="badge badge-pill red-bg"><i class="fas fa-italic"></i><i class="fas fa-italic"></i></span>
-    <!--  Modal trigger button -->
-    <button type="button" class="btn btn-lg btn-outline-light text-wrap" data-toggle="modal" data-target="#burgerModal">
-      <i class="fas fa-hamburger">  Add A New Burger!</i>
-    </button>
+  <h1 class="text-center display-4 p-0 m-0">
+    <span class="d-none d-md-inline">EAT-DA-</span>BURGERS <span class="badge badge-pill red-bg m-0"><i class="fas fa-italic"></i><i class="fas fa-italic"></i></span>
   </h1>
-  
+  <div class="text-center">
+        <!--  Modal trigger button --> 
+    <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#burgerModal">
+      <i class="fas fa-hamburger"> Add New Burger</i>
+    </button>
+  </div>
+
 </div>
+  <!-- bootstrap container for contents -->
 <div class="container-fluid font-weight-bold text-center">
-
-  <div class="row  text-white">
-
-    <div class="row col-md-6">
-
-      <div class="col-12">
-        <div class="shadow-lg py-3 mb-4 palegreen-bg rounded my-4 my-md-3 p-1">
-          <h1><i class="fas fa-hamburger"></i> Un-Eaten Burgers! <i class="fas fa-hamburger"></i></h1>
-        </div>
-        {{#each burgers}}
-           {{#unless this.dataValues.devoured}}
-            <div class="card palegreen-bg mb-2">
-              <div class="card-body m-1 p-2">
-                <h5 class="card-title capitalize"><span class="badge badge-pill blue-bg float-left">{{this.dataValues.id}}.</span>
-                 {{this.dataValues.burger_name}}<span class="float-right">
-                  <button class="change-devoured btn red-bg btn-sm ml-2" data-id="{{this.dataValues.id}}">
-                   <i class="fas fa-hamburger"> DEVOUR!</i>
-                  </button></span>
-                </h5>
-              </div>
-            </div>
-            {{/unless}}
-        {{/each}}
-      </div>
+  
+  <div class="row text-white">
+    <!-- Uneaten Burger Row -->
+    <div class="row col-lg-6">
+      {{>uneaten}}
     </div>
-
-    <div class="row col-md-6">
-      <div class="col-12">
-          <div class="shadow-lg p-3 mb-4 red-bg rounded my-4 my-md-3">
-            <h1><i class="fas fa-hamburger"></i> Burgers Devoured! <i class="fas fa-hamburger"></i></h1>
-          </div>
-          {{#each burgers}}
-            {{#if this.dataValues.devoured}}
-                <div class="card red-bg mb-2">
-                  <div class="card-body m-1 p-2">
-                    <h5 class="card-title capitalize"><span class="badge badge-pill blue-bg float-left">{{this.dataValues.id}}.</span>
-                      {{this.dataValues.burger_name}}
-                    </h5>
-                  </div>
-                </div>
-            {{/if}}
-          {{/each}}
-        </div>
-    </div>
-
-  </div>
-  <!-- Add New Burger Modal -->
-  <div class="modal fade" id="burgerModal" tabindex="-1" role="dialog" aria-labelledby="burgerModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content darkblue-bg text-white">
-        <div class="modal-header">
-          <!--Easter Egg Secret set all to undevoured button-->
-          <button type="button" class="btn btn-sm btn-outline-info" id="secretResetButton"><i class="fas fa-hamburger"></i></button>
-            <h1 class="modal-title font-weight-bolder" id="burgerModalLabel">Add a New Burger!</h1>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body ">
-              <img src="./assets/img/burger_king.jpg" class="card-img-top align-middle rounded-circle" id="modalImg" alt="Burger image">
-            <form class="create-form">
-               <div class="form-group text-left">
-                  <label for="burgercreate font-weight-bolder"> Burger Name:
-                  </label>
-                  <h6 id="valMessage" class="card-subtitle m-2 text-danger"></h6>
-                  <input class="form-control text-center" type="text" id="burgercreate" name="burgername" placeholder="Cheeseburger" required >
-                </div>
-                  <button class="btn-dark btn btn-lg" type="submit">Add <i class="fas fa-hamburger"> Burger!</i>
-                  </button>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn red-bg" data-dismiss="modal"><i class="fas fa-times"> Close</i></button>
-          </div>
-      </div>
+    <!-- ate Burger Row -->
+    <div class="row col-lg-6">
+      {{>ate}}
     </div>
   </div>
-
+  {{>createmodal}}
+	{{>devourmodal}}
 </div>
