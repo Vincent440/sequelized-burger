@@ -6,11 +6,22 @@
         {{#if dataValues.devoured}}
             <div class="card red-bg mb-2">
                 <div class="card-body m-1 p-2">
-                    <h5 class="card-title text-capitalize">
-                        <span class="badge badge-pill blue-bg float-left">
-                            {{dataValues.id}}.
-                        </span>{{dataValues.burger_name}}
-                    </h5>
+                    <div class="row no-gutters">
+                        <div class="col-1">
+                            <span class="badge badge-pill blue-bg">
+                                {{dataValues.id}}.
+                            </span>
+                        </div>
+                        <div class="col-8">
+                            <h5 class="card-title text-capitalize">{{dataValues.burger_name}}</h5>
+                        </div>
+                        <div class="col-3">
+                            <p class="card-text eat-name">
+                                <small class="text-muted">Devoured By: {{dataValues.user_name}}</small>
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         {{/if}}

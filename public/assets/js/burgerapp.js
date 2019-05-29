@@ -1,23 +1,24 @@
+/* eslint-disable no-undef */
 $(() => {
 
-  $("#change-devoured").on("click", function(event) {
-    //let customer = $("#customer-create").val().trim();
+  $("#change-devoured-btn").on("click", function(event) {
     event.preventDefault();
     let errText = $("eat-alert");
+    let id = $(this).data("burgerid");
     if ($("#user-name").val().trim() === undefined ) {
       errText.removeClass('d-none');
-      errText.text("name must not be null");
+      errText.text("name must not be null and only letters");
     }
     else {
-      let userBurger = {
-        burgerId: $(this).data("burgerId"),
+      let ateBurger = {
+        burgerId: id,
         user_name: $("#user-name").val().trim()
       }
-
     $.ajax("/burgers/update", {
       // Send the PUT request.
       type: "PUT",
-      data: userBurger
+      data: ateBurger
+      
     }).then(() => {
       location.reload(); //Reload the page to get the updated list
     });
@@ -71,10 +72,8 @@ $(() => {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var burgerId = button.data('burgerid'); // Extract info from data-* attributes
     var burgerName = button.data('burgername');
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.modal-title').text('Eat ' + burgerName);
-    modal.find('.modal-footer button').data("burgerid"+burgerId);
+    modal.find('#eatBurgerModalLabel').text('Eat ' + burgerName);
+    $("#change-devoured-btn").attr("data-burgerid",burgerId);
   });
 });

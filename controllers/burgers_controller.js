@@ -10,15 +10,19 @@ var db = require("../models");
 router.get("/",(req,res)=>{
     db.Burger.findAll(
     {
-        order:     ['burger_name']
+        attributes: ["id", "burger_name", "devoured"],
+        order: [ ['burger_name','ASC'] ],
+        include: [ {model: db.User, attributes: ["user_name"] }]
     }
     ).then(burgers=>{
-        res.render('index',{burgers});
+        res.render("index",{burgers});
     })
 });
 
 router.put("/burgers/update",(req,res)=>{
-    db.Burger.update({devoured:true},
+    db.Burger.update({
+        devoured:true
+    },
         { 
         where: {
             id: req.body.burgerId
