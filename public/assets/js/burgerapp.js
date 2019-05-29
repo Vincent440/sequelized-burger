@@ -1,52 +1,53 @@
 /* eslint-disable no-undef */
 $(() => {
+//RegEx used for creating burger, and User
+  let letterReg = /[A-z\s]/gi;//Checks that it contains letters with spaces
+  let notWord = /\d|[^a-z\s]/gi;//checks if it contains digits or anything that is not a letter
 
   $("#change-devoured-btn").on("click", function(event) {
     event.preventDefault();
-    let errText = $("eat-alert");
+
+    let user = $("#user-name").val().trim();
+    let errText = $("#eat-alert");
     let id = $(this).data("burgerid");
-    if ($("#user-name").val().trim() === undefined ) {
+
+    if ( !letterReg.test(user) || notWord.test(user) ) {
       errText.removeClass('d-none');
-      errText.text("name must not be null and only letters");
+      errText.html("Name can't be left blank & Must only contain letters.");
     }
-    else {
+    else if (letterReg.test(user) && !notWord.test(user)) {
       let ateBurger = {
         burgerId: id,
-        user_name: $("#user-name").val().trim()
+        user_name: user
       }
-    $.ajax("/burgers/update", {
-      // Send the PUT request.
-      type: "PUT",
-      data: ateBurger
-      
-    }).then(() => {
-      location.reload(); //Reload the page to get the updated list
-    });
+      $.ajax("/burgers/update", {
+        type: "PUT",
+        data: ateBurger
+      }).then(() => {
+        location.reload(); //Reload the page to update
+      });
     }
-
-
+    else {
+      errText.removeClass("d-none");
+      errText.html("Name must contain letters only, and Can't be left blank.");
+    }
   });
 
   $(".create-form").on("submit", function(event) {
     event.preventDefault();// Make sure to preventDefault on a submit event.
 
     let burger = $("#burger-create").val().trim();
-
-    let letterRe = /[A-z\s]/gi;//RegExp to make sure only letters with burger in the name are allowed to be stored
+    //RegExp to make sure only letters with burger in the name are allowed to be stored
     let burgerRe = /(?:burger)/i;
-    let notWord = /\d|[^a-z\s]/gi
 
-    if (letterRe.test(burger) && !burgerRe.test(burger) && !notWord.test(burger)) {
+    if (letterReg.test(burger) && !burgerRe.test(burger) && !notWord.test(burger)) {
       $("#valMessage").removeClass("d-none");
       $("#valMessage").html("Burger must be somewhere in the name!");
     } 
-
-    else if (letterRe.test(burger) && burgerRe.test(burger) && !notWord.test(burger)) {
-
+    else if (letterReg.test(burger) && burgerRe.test(burger) && !notWord.test(burger)) {
         var newBurger = {
           burger_name: burger
         };
-
         $.ajax("/burgers/create", {// Send the POST request.
           type: "POST",
           data: newBurger

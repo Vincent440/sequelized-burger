@@ -8,7 +8,8 @@
     margin-right: .65em;
 }
 .eat-name {
-  font-size: 0.8em;
+  font-size: 60%;
+  font-weight: 400;
 }
 /* Color Theme Swatches in Hex */
 .darkblue-bg {

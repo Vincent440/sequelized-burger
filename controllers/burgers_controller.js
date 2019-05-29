@@ -3,13 +3,10 @@ const express = require("express");
 
 const router = express.Router();
 
-// Requiring our models
-var db = require("../models");
-
+var db = require("../models");// Requiring our models
 
 router.get("/",(req,res)=>{
-    db.Burger.findAll(
-    {
+    db.Burger.findAll({
         attributes: ["id", "burger_name", "devoured"],
         order: [ ['burger_name','ASC'] ],
         include: [ {model: db.User, attributes: ["user_name"] }]
@@ -22,11 +19,7 @@ router.get("/",(req,res)=>{
 router.put("/burgers/update",(req,res)=>{
     db.Burger.update({
         devoured:true
-    },
-        { 
-        where: {
-            id: req.body.burgerId
-        }
+    },{ where: { id: req.body.burgerId }
     }).then(()=>{
         db.User.create({
             user_name: req.body.user_name,
@@ -38,11 +31,8 @@ router.put("/burgers/update",(req,res)=>{
 });
 
 router.post("/burgers/create",(req, res)=> {
-    db.Burger.create(
-    {   
-    burger_name : req.body.burger_name
-    }
-    ).then(()=>{
+    db.Burger.create({ burger_name : req.body.burger_name })
+    .then(()=>{
       res.status(200).end();
     }).catch(err=>{
         if (err)throw err;
@@ -50,11 +40,11 @@ router.post("/burgers/create",(req, res)=> {
 });
 
 router.put("/burgers/resetall",(req,res)=>{//Secret update all to uneaten button.  
-    db.Burger.update({devoured:false},{
-        where: {devoured: true}
+    db.Burger.update({ devoured:false },{
+        where: { devoured: true }
     }).then(()=>{
        res.status(200).end();
     });
 });
-// Export routes for server.js to use.
-module.exports = router;
+
+module.exports = router;//Export routes for server.js to use.
