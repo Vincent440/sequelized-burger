@@ -1,7 +1,7 @@
 # Eat-Da-Burger THE SEQUEL MVC Application
 A burger logger with MySQL, Node, Express, Handlebars and a ORM. Following the MVC design pattern; using Node and MySQL to query and route data, and Handlebars to generate the HTML.
 
-View the page here to try it out for yourself! [Eat-Da-Burger!](https://blooming-everglades-90768.herokuapp.com/)
+View the page here to try it out for yourself! [Eat-Da-Burger! Sequal](https://obscure-atoll-61774.herokuapp.com/)
 
 #### By Vince Shury
 Thanks again for viewing my repository.
