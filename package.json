@@ -18,10 +18,13 @@
   },
   "homepage": "https://github.com/Vincent440/burger#readme",
   "dependencies": {
-    "express": "^4.16.4",
-    "express-handlebars": "^3.0.2",
-    "mysql": "^2.17.1",
-    "mysql2": "^1.6.5",
-    "sequelize": "^5.8.4"
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^1.7.0",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
   }
 }

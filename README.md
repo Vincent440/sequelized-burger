@@ -1,4 +1,4 @@
-# **Sequelized-Eat-The-Burger**
+# **Sequelized-Burger-Tracker**
 A burger logger with MySQL, Node, Express, Handlebars and a ORM. Following the MVC design pattern; using Node and MySQL to query and route data, and Handlebars to generate the HTML.
 
 A user can:
