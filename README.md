@@ -7,8 +7,6 @@ A user can:
 * eat a burger and attach a user to the burger that has been eaten. 
 * a burger has one user. and a user belongs to a burger through Sequelize/MySQL foriegn keys
 
-View the page here: [sequelized-eat-the-burger](https://sequelized-eat-the-burger.herokuapp.com/)
-
 ---
 
 ## By **Vincent Shury**
